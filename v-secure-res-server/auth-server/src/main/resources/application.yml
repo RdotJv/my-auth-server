@@ -1,0 +1,35 @@
+server:
+  port: 9000
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          public-client:
+            registration:
+              client-id: react-client
+              client-authentication-methods:
+                - none
+              authorization-grant-types:
+                - authorization_code
+                - refresh_token
+              redirect-uris:
+                - http://localhost:5173/callback
+              scopes:
+                - openid
+                - profile
+            require-authorization-consent: true
+            require-proof-key: true
+app:
+  issuer: http://localhost:9000
+  allowed-origin: http://localhost:5173
+
+logging:
+  level:
+    org.springframework.security: trace
+    org.springframework.security.oauth2: trace
+    org.springframework.web: trace

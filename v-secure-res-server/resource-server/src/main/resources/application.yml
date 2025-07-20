@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000  # must match AuthorizationServerSettings.issuer
+          # OR if issuer metadata not reachable yet:
+          # jwk-set-uri: http://localhost:9000/oauth2/jwks
+logging:
+  level:
+    org.springframework.security: trace
+    org.springframework.web: trace
