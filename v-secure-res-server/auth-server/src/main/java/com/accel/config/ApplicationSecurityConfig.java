@@ -40,7 +40,7 @@ public class ApplicationSecurityConfig {
                         .clearAuthentication(true))
 
                 .requestCache((rc)->rc.requestCache(new HttpSessionRequestCache()))
-                .csrf(csrf -> csrf //NOT WORKING
+                .csrf(csrf -> csrf 
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .cors(Customizer.withDefaults())
                 .headers(h -> h.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
