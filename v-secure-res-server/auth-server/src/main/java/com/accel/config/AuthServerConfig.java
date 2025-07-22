@@ -93,27 +93,28 @@ public class AuthServerConfig {
         }
     }
 
-    @Bean
-    public RegisteredClientRepository registeredClientRepository(PasswordEncoder encoder) {
-        RegisteredClient publicClient = RegisteredClient.withId(UUID.randomUUID().toString())
-                .clientId("react-client")
-                .clientAuthenticationMethod(ClientAuthenticationMethod.NONE)
-                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://localhost:5173/callback")
-                .scope(OidcScopes.OPENID)
-                .scope(OidcScopes.PROFILE)
-                .clientSettings(ClientSettings.builder()
-                        .requireAuthorizationConsent(true)
-                        .requireProofKey(true)
-                        .build())
-                .tokenSettings(TokenSettings.builder()
-                        .accessTokenTimeToLive(Duration.ofMinutes(5))
-                        .refreshTokenTimeToLive(Duration.ofHours(8))
-                        .reuseRefreshTokens(true)
-                        .build())
-                .build();
-        return new InMemoryRegisteredClientRepository(publicClient);
-    }
+//provided in yml
+//    @Bean
+//    public RegisteredClientRepository registeredClientRepository(PasswordEncoder encoder) {
+//        RegisteredClient publicClient = RegisteredClient.withId(UUID.randomUUID().toString())
+//                .clientId("react-client")
+//                .clientAuthenticationMethod(ClientAuthenticationMethod.NONE)
+//                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+//                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+//                .redirectUri("http://localhost:5173/callback")
+//                .scope(OidcScopes.OPENID)
+//                .scope(OidcScopes.PROFILE)
+//                .clientSettings(ClientSettings.builder()
+//                        .requireAuthorizationConsent(true)
+//                        .requireProofKey(true)
+//                        .build())
+//                .tokenSettings(TokenSettings.builder()
+//                        .accessTokenTimeToLive(Duration.ofMinutes(5))
+//                        .refreshTokenTimeToLive(Duration.ofHours(8))
+//                        .reuseRefreshTokens(true)
+//                        .build())
+//                .build();
+//        return new InMemoryRegisteredClientRepository(publicClient);
+//    }
 
 }

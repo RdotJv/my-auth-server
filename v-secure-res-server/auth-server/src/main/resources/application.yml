@@ -9,7 +9,7 @@ spring:
     oauth2:
       authorizationserver:
         client:
-          public-client:
+          react-client:
             registration:
               client-id: react-client
               client-authentication-methods:
@@ -22,7 +22,7 @@ spring:
               scopes:
                 - openid
                 - profile
-            require-authorization-consent: true
+            require-authorization-consent: false
             require-proof-key: true
 app:
   issuer: http://localhost:9000
